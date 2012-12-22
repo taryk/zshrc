@@ -94,8 +94,10 @@ export LANGUAGE=en_US.UTF-8
 
 if [ -e /usr/bin/emacsclient.emacs24 ]; then
   export EDITOR=emacsclient.emacs24
+elif [ -e /usr/bin/emacsclient ]; then
+  export EDITOR=emacsclient
 else
-  export EDITOR=emacsclient.emacs
+  export EDITOR='emacs -nw'
 fi
 
 
