@@ -40,6 +40,45 @@ function baseconvert() {
 }
 
 function bin2oct() { echo "ibase=2; obase=8; $@"   | bc }
+# binary predicate
+function bin_p() {
+  if [[ "${1/[^0-1]}" == "${1}" ]]; then
+      return 0
+  else
+      echo "\"$@\" is not a bin number - just use bin digits [0-1]"
+      return 1
+  fi
+}
+
+# octal predicate
+function oct_p() {
+  if [[ "${1/[^0-7]}" == "${1}" ]]; then
+      return 0
+  else
+     echo "\"$@\" is not an oct number - just use oct digits [0-7]"
+     return 1
+  fi
+}
+
+# decimal predicate
+function dec_p() {
+  if [[ "${1/[^0-9]}" == "${1}" ]]; then
+      return 0
+  else
+      echo "\"$@\" is not a dec number - just use oct digits [0-9]"
+      return 1
+  fi
+}
+
+# hex predicate
+function hex_p() {
+  if [[ "${1/[^0-9A-Fa-f]}" == "${1}" ]]; then
+      return 0
+  else
+      echo "\"$@\" is not a hex number - just use hex digits [0-F]"
+      return 1
+  fi
+}
 
 function bin2dec() { echo "ibase=2; obase=10; $@"  | bc }
 
