@@ -31,10 +31,13 @@ function say() {
 }
 
 function baseconvert() {
-  if [[ -n "$1" ]] && [[ -n "$2" ]] && [[ -n "$3" ]]; then
-      echo "ibase=${1}; obase=${2}; ${3}" | bc
+  if [[ -n "$1" ]] && [[ -n "$2" ]]; then
+      for number in ${*:3}; do
+          obase=$(echo "obase=${1}; ${2}" | bc)
+          echo "ibase=${1}; obase=${obase}; ${number}" | bc
+      done
   else
-      echo "Usage: $0 <ibase> <obase> <number>"
+      echo "Usage: $0 <ibase> <obase> NUM-1 .. NUM-N"
       return 1
   fi
 }
