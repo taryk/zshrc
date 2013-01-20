@@ -42,7 +42,6 @@ function baseconvert() {
   fi
 }
 
-function bin2oct() { echo "ibase=2; obase=8; $@"   | bc }
 # binary predicate
 function bin_p() {
   if [[ "${1/[^0-1]}" == "${1}" ]]; then
@@ -83,27 +82,32 @@ function hex_p() {
   fi
 }
 
-function bin2dec() { echo "ibase=2; obase=10; $@"  | bc }
+# NOTE: As soon as `ibase=x` is interpreted, numbers are read in base x.
+# So `obase` should be in base specified in `ibase` value
 
-function bin2hex() { echo "ibase=2; obase=16; $@"  | bc }
+function bin2oct() { bin_p $@ && echo "ibase=2; obase=1000; $@"  | bc }
 
-function oct2bin() { echo "ibase=8; obase=2; $@"   | bc }
+function bin2dec() { bin_p $@ && echo "ibase=2; obase=1010; $@"  | bc }
 
-function oct2dec() { echo "ibase=8; obase=10; $@"  | bc }
+function bin2hex() { bin_p $@ && echo "ibase=2; obase=10000; $@" | bc }
 
-function oct2hex() { echo "ibase=8; obase=16; $@"  | bc }
+function oct2bin() { oct_p $@ && echo "ibase=8; obase=2; $@"     | bc }
 
-function dec2bin() { echo "ibase=10; obase=2; $@"  | bc }
+function oct2dec() { oct_p $@ && echo "ibase=8; obase=12; $@"    | bc }
 
-function dec2oct() { echo "ibase=10; obase=8; $@"  | bc }
+function oct2hex() { oct_p $@ && echo "ibase=8; obase=20; $@"    | bc }
 
-function dec2hex() { echo "ibase=10; obase=16; $@" | bc }
+function dec2bin() { dec_p $@ && echo "ibase=10; obase=2; $@"    | bc }
 
-function hex2bin() { echo "ibase=16; obase=2; $@"  | bc }
+function dec2oct() { dec_p $@ && echo "ibase=10; obase=8; $@"    | bc }
 
-function hex2oct() { echo "ibase=16; obase=8; $@"  | bc }
+function dec2hex() { dec_p $@ && echo "ibase=10; obase=16; $@"   | bc }
 
-function hex2dec() { echo "ibase=16; obase=10; $@" | bc }
+function hex2bin() { hex_p $@ && echo "ibase=16; obase=2; $@"    | bc }
+
+function hex2oct() { hex_p $@ && echo "ibase=16; obase=8; $@"    | bc }
+
+function hex2dec() { hex_p $@ && echo "ibase=16; obase=A; $@"    | bc }
 
 
 function hex2dec_f() { printf "%d\n" "0x$@" }
