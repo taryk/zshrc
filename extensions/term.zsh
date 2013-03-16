@@ -31,12 +31,12 @@ case $TERM in
   screen)
     #precmd () { print -Pn "\033k%~\033\\" }
     #preexec () { print -Pn "\033k$1\033\\" }
-    export PS1="[screen] %{$fg[blue]%}%n%{$reset_color%}%\@%{$fg[red]%}%m%{$reset_color%} %{$fg[yellow]%}(%T)%{$reset_color%} %{$fg[magenta]%}%\{ %{$reset_color%}%~%{$fg[magenta]%} %\}%{$reset_color%}%{$fg[green]%}%#%{$reset_color%} "
+    export PS1="[screen] %{$fg[blue]%}%n%{$reset_color%}%\@%{$fg[red]%}%m%{$reset_color%} %{$fg[yellow]%}(%T)%{$reset_color%} %{$fg[magenta]%}%\{ %{$reset_color%}%~${PROMPT_INSIDE}%{$fg[magenta]%} %\}%{$reset_color%}%{$fg[green]%}%#%{$reset_color%} "
     ;;
 
   # linux tty
   linux)
-    export PS1="[%l] %{$fg[blue]%}%n%{$reset_color%}%\@%{$bg[red]%}%m%{$reset_color%} %{$fg[yellow]%}(%T)%{$reset_color%} %{$fg[magenta]%}%\{ %{$reset_color%}%~%{$fg[magenta]%} %\}%{$reset_color%}%{$fg[green]%}%#%{$reset_color%} "
+    export PS1="[%l] %{$fg[blue]%}%n%{$reset_color%}%\@%{$bg[red]%}%m%{$reset_color%} %{$fg[yellow]%}(%T)%{$reset_color%} %{$fg[magenta]%}%\{ %{$reset_color%}%~${PROMPT_INSIDE}%{$fg[magenta]%} %\}%{$reset_color%}%{$fg[green]%}%#%{$reset_color%} "
     ;;
 
   # emacs terminals
