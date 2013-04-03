@@ -1,6 +1,6 @@
 # ~/zsh/init.zsh - ZSH initial script
 #
-# Author: Taras Yagniuk <mrtaryk@gmail.com>
+# Author: Taras Iagniuk <mrtaryk@gmail.com>
 # Version: 0.3
 # keywords: zsh shell emacs perl
 
