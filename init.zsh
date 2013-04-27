@@ -157,6 +157,7 @@ alias cache_drop_3='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
 
 alias new_login_in_window='gdmflexiserver --xnest'
 alias new_login='gdmflexiserver'
+alias todays_files='find . -mtime -1 -print'
 
 # alias netbeans_gtk='/usr/local/netbeans/bin/netbeans --laf GTK'
 alias z='ps -Af | grep'
