@@ -8,4 +8,7 @@ function docker_env_default() {
     eval $(docker-machine env default)
 }
 
-docker_env_default
+# Export docker-machine env variables when on Mac OS X.
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    docker_env_default
+fi
