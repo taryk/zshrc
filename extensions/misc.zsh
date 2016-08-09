@@ -25,11 +25,6 @@ function git_grep_rep() {
 # c() { awk "{ print \$$1 }" }
 # svnid() { svn propset svn:keywords "Author Date Id Revision" $1 }
 
-# say - append a newline to 'print'
-function say() {
-  print "$1\n"
-}
-
 function baseconvert() {
   if [[ -n "$1" ]] && [[ -n "$2" ]]; then
       for number in ${*:3}; do
