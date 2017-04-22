@@ -28,19 +28,6 @@ latest-perl() {
   curl -s http://www.perl.org/get.html | perl -wlne 'if (/perl\-([\d\.]+)\.tar\.gz/) { print $1; exit;}'
 }
 
-# newpl - creates a basic Perl script file and opens it with `emacs -nw`
-newpl () {
-  # set $EDITOR to 'emacs' if it is undefinned
-  # [[ -z $EDITOR ]] && EDITOR=emacs 
-
-  # if the file exists, just open it
-  [[ -e $1 ]] && print "$1 exists; not modifying.\n" && emacsclient.emacs24 -nw $1
-
-  # if it doesn't, make it, and open it
-  [[ ! -e $1 ]] && print '#!/usr/bin/perl'"\n"'use strict;'"\n"'use warnings;'\
-          "\n\n" > $1 && emacs -nw $1
-}
-
 # pgs - Perl Global Substitution
 # find pattern          = 1st arg
 # replace pattern       = 2nd arg
