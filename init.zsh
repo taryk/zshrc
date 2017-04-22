@@ -98,25 +98,6 @@ else
   export EDITOR='emacs -nw'
 fi
 
-
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    eval `dircolors`
-    alias ls='ls --color=auto -F'
-    export GREP_OPTIONS='--color=auto'
-    export GREP_COLOR='1;32'
-
-    #
-    # Shell Job completed to remind
-    # for urxvt:
-    # URxvt.urgentOnBell: True
-    # for bash:
-    # export PROMPT_COMMAND="echo -ne '\a'"
-    # for zsh:
-    precmd () (
-        echo -ne '\a'
-    )
-fi
-
 ## Proxies
 # export http_proxy='http://192.168.0.1:8080/'
 # export ftp_proxy='http://192.168.0.1:8080/'
@@ -133,7 +114,7 @@ alias sdr="screen -aAdr"
 alias la="ls -hAF"
 alias ll="ls -lAF"
 alias li='ls -hial'
-alias ls='ls -hF --color=auto'
+alias ls='ls -hF'
 alias lsa='ls -hld .*'
 alias lsd='ls -hld *(-/DN)'
 alias mv='nocorrect mv -i'
@@ -192,6 +173,23 @@ alias -s exe='wine'
 alias -s {jpeg,jpg,png,gif}=$IMAGE_VIEWER
 alias -s {ods,xls,xlsx}=$OFFICE_TABLES
 alias -s {pdf,djvu,epub}=$PDF_VIEWER
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    eval `dircolors`
+    alias ls='ls --color=auto -F'
+    export GREP_OPTIONS='--color=auto'
+    export GREP_COLOR='1;32'
+
+    #
+    # Shell Job completed to remind
+    # for urxvt:
+    # URxvt.urgentOnBell: True
+    # for bash:
+    # export PROMPT_COMMAND="echo -ne '\a'"
+    # for zsh:
+    precmd () (
+        echo -ne '\a'
+    )
+fi
 
 # directories
 b=$HOME/bin ;           : ~b
