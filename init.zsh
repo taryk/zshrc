@@ -130,12 +130,6 @@ alias ..='cd ..'
 alias cd..='cd ..'
 alias -- -='cd -'
 alias sshx='ssh -X'
-alias cache_drop='sudo sh -c "echo 1 > /proc/sys/vm/drop_caches"'
-alias cache_drop_2='sudo sh -c "echo 2 > /proc/sys/vm/drop_caches"'
-alias cache_drop_3='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
-
-alias new_login_in_window='gdmflexiserver --xnest'
-alias new_login='gdmflexiserver'
 alias todays_files='find . -mtime -1 -print'
 
 # alias netbeans_gtk='/usr/local/netbeans/bin/netbeans --laf GTK'
@@ -205,6 +199,14 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     precmd () (
         echo -ne '\a'
     )
+
+    # Linux specific aliases
+    alias cache_drop='sudo sh -c "echo 1 > /proc/sys/vm/drop_caches"'
+    alias cache_drop_2='sudo sh -c "echo 2 > /proc/sys/vm/drop_caches"'
+    alias cache_drop_3='sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"'
+
+    alias new_login_in_window='gdmflexiserver --xnest'
+    alias new_login='dm-tool switch-to-greeter'
 fi
 
 # directories
