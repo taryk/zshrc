@@ -154,14 +154,27 @@ alias -g N='2>/dev/null'
 alias -g T='| tail'
 alias -g TF='| tail -f'
 
-IMAGE_VIEWER='geeqie'
-OFFICE_WRITER='libreoffice --writer --nologo'
-OFFICE_TABLES='libreoffice --calc --nologo'
-PDF_VIEWER='okular'
+if [[ "$OSTYPE" == ^darwin.*$ ]]; then
+    IMAGE_VIEWER='/Applications/Preview.app/Contents/MacOS/Preview'
+    OFFICE_WRITER='/Applications/LibreOffice.app/Contents/MacOS/soffice --writer --nologo'
+    OFFICE_TABLES='/Applications/LibreOffice.app/Contents/MacOS/soffice --calc --nologo'
+    PDF_VIEWER='/Applications/Preview.app/Contents/MacOS/Preview'
+    DJVU_VIEWER='/Applications/DjVu\ Reader.app/Contents/MacOS/DjVu\ Reader'
+    EPUB_VIEWER='/Applications/iBooks.app/Contents/MacOS/iBooks'
+    VIDEO_PLAYER='/Applications/VLC.app/Contents/MacOS/VLC'
+    AUDIO_PLAYER='/Applications/VLC.app/Contents/MacOS/VLC'
+else
+    IMAGE_VIEWER='geeqie'
+    OFFICE_WRITER='libreoffice --writer --nologo'
+    OFFICE_TABLES='libreoffice --calc --nologo'
+    PDF_VIEWER='okular'
+    DJVU_VIEWER='okular'
+    EPUB_VIEWER='okular'
+    VIDEO_PLAYER='smplayer'
+    AUDIO_PLAYER='mplayer'
+fi
+
 PLAINTEXT_EDITOR=$EDITOR
-VIDEO_PLAYER='smplayer'
-# AUDIO_PLAYER='mpg123'
-AUDIO_PLAYER='mplayer'
 
 # suffix based alias
 alias -s {asf,avi,divx,flv,mkv,mp4,mpg,ogp,ts,vob,wmv}=$VIDEO_PLAYER
@@ -172,7 +185,10 @@ alias -s {doc,docx,odt}=$OFFICE_WRITER
 alias -s exe='wine'
 alias -s {jpeg,jpg,png,gif}=$IMAGE_VIEWER
 alias -s {ods,xls,xlsx}=$OFFICE_TABLES
-alias -s {pdf,djvu,epub}=$PDF_VIEWER
+alias -s pdf=$PDF_VIEWER
+alias -s {djv,djvu}=$DJVU_VIEWER
+alias -s epub=$EPUB_VIEWER
+
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     eval `dircolors`
     alias ls='ls --color=auto -F'
