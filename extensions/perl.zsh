@@ -25,7 +25,7 @@ alias ple='perl -wlne'
 
 # latest stable perl version
 latest-perl() {
-  curl -s http://www.perl.org/get.html | perl -wlne 'if (/perl\-([\d\.]+)\.tar\.gz/) { print $1; exit;}'
+  curl -s https://www.perl.org/get.html | perl -wlne 'if (/perl\-([\d\.]+)\.tar\.gz/) { print $1; exit;}'
 }
 
 # pgs - Perl Global Substitution
