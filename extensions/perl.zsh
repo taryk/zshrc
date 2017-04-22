@@ -25,7 +25,7 @@ alias ple='perl -wlne'
 
 # latest stable perl version
 latest-perl() {
-  curl -s https://www.perl.org/get.html | perl -wlne 'if (/perl\-([\d\.]+)\.tar\.gz/) { print $1; exit;}'
+    curl -s https://www.perl.org/get.html | perl -wlne 'if (/perl\-([\d\.]+)\.tar\.gz/) { print $1; exit;}'
 }
 
 # pgs - Perl Global Substitution
@@ -33,13 +33,13 @@ latest-perl() {
 # replace pattern       = 2nd arg
 # filename              = 3rd arg
 pgs() { # [find] [replace] [filename]
-  perl -i.orig -pe 's/'"$1"'/'"$2"'/g' "$3"
+    perl -i.orig -pe 's/'"$1"'/'"$2"'/g' "$3"
 }
 
 
 # Perl grep, because 'grep -P' is terrible. Lets you work with pipes or files.
 prep() { # [pattern] [filename unless STDOUT]
-  perl -nle 'print if /'"$1"'/;' $2
+    perl -nle 'print if /'"$1"'/;' $2
 }
 ### }}
 
