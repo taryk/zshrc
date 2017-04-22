@@ -55,3 +55,9 @@ prep() { # [pattern] [filename unless STDOUT]
   perl -nle 'print if /'"$1"'/;' $2
 }
 ### }}
+
+# Migrate all currently installed CPAN modules to another perl.
+# Takes one parameter - a perl version, in accordance with `perlbrew list`.
+function reinstall-all-perl-modules-on-new-perl() {
+    perlbrew list-modules | perlbrew exec --with $1 cpanm -n --sudo
+}
