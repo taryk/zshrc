@@ -95,9 +95,9 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 if type -P emacsclient >/dev/null 2>&1; then
-  export EDITOR=emacsclient
+    export EDITOR=emacsclient
 else
-  export EDITOR='emacs -nw'
+    export EDITOR='emacs -nw'
 fi
 
 ## Proxies
@@ -226,39 +226,39 @@ ZSHEXTENSIONS="${ZSHRCDIR}/extensions/"
 
 # re-compile zsh rc files
 src() {
-  autoload -U zrecompile
+    autoload -U zrecompile
 
-  [ -f $ZSHRCDIR/init.zsh ] && zrecompile -p $ZSHRCDIR/init.zsh
-  [ -f $ZSHRCDIR/init.zsh.zwc.old ] && rm -f $ZSHRCDIR/init.zsh.zwc.old
+    [ -f $ZSHRCDIR/init.zsh ] && zrecompile -p $ZSHRCDIR/init.zsh
+    [ -f $ZSHRCDIR/init.zsh.zwc.old ] && rm -f $ZSHRCDIR/init.zsh.zwc.old
 
-  [ -f $HOME/.zshrc.local ] && zrecompile -p $HOME/.zshrc.local
-  [ -f $HOME/.zshrc.local.zwc.old ] && rm -f $HOME/.zshrc.local.zwc.old
+    [ -f $HOME/.zshrc.local ] && zrecompile -p $HOME/.zshrc.local
+    [ -f $HOME/.zshrc.local.zwc.old ] && rm -f $HOME/.zshrc.local.zwc.old
 
-  if [ -e $ZSHEXTENSIONS ]; then
-    for zshrcfile in $ZSHEXTENSIONS/*.zsh ; do
-      zrecompile -p $zshrcfile
-      [ -f "${zshrcfile}.zwc.old" ] && rm -f "${zshrcfile}.zwc.old"
-    done
-  fi
+    if [ -e $ZSHEXTENSIONS ]; then
+        for zshrcfile in $ZSHEXTENSIONS/*.zsh ; do
+            zrecompile -p $zshrcfile
+            [ -f "${zshrcfile}.zwc.old" ] && rm -f "${zshrcfile}.zwc.old"
+        done
+    fi
 
-  source $ZSHRCDIR/init.zsh
+    source $ZSHRCDIR/init.zsh
 }
 
 # source local zshalias
 if [ -e ~/.zshalias.local ]; then
-  source ~/.zshalias.local
+    source ~/.zshalias.local
 fi
 
 # load files from ~/.zsh/*.zsh
 if [ -e $ZSHEXTENSIONS ]; then
-  for zshrcfile in $ZSHEXTENSIONS/*.zsh ; do
-    source $zshrcfile
-  done
+    for zshrcfile in $ZSHEXTENSIONS/*.zsh ; do
+        source $zshrcfile
+    done
 fi
 
 #
 # Puts ~/bin to PATH if exists
 #
 if [ -d ~/bin ] ; then
-  PATH=~/bin:"${PATH}"
+    PATH=~/bin:"${PATH}"
 fi
