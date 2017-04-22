@@ -10,7 +10,12 @@ alias pbu='perlbrew use'
 alias pbu='perlbrew available'
 
 export PERLBREW_ROOT=/opt/perl5
-export PERLBREW_PATH="$PERLBREW_ROOT/bin:$HOME/perl5/perlbrew/bin"
+export PERLBREW_PATH="$PERLBREW_ROOT/bin"
+
+HOME_PERLBREW="$HOME/perl5/perlbrew"
+if [ -d "$HOME_PERLBREW/bin" ]; then
+    export PERLBREW_PATH="$PERLBREW_PATH:$HOME_PERLBREW/bin"
+fi
 
 # imports perlbrew function
 if [ -f "$PERLBREW_ROOT/etc/bashrc" ]; then
