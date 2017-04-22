@@ -104,6 +104,17 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias ls='ls --color=auto -F'
     export GREP_OPTIONS='--color=auto'
     export GREP_COLOR='1;32'
+
+    #
+    # Shell Job completed to remind
+    # for urxvt:
+    # URxvt.urgentOnBell: True
+    # for bash:
+    # export PROMPT_COMMAND="echo -ne '\a'"
+    # for zsh:
+    precmd () (
+        echo -ne '\a'
+    )
 fi
 
 ## Proxies
@@ -113,17 +124,6 @@ fi
 autoload promptinit
 promptinit
 # prompt zefram
-
-#
-# Shell Job completed to remind
-# for urxvt:
-# URxvt.urgentOnBell: True
-# for bash:
-# export PROMPT_COMMAND="echo -ne '\a'"
-# for zsh:
-precmd () (
-  echo -ne '\a'
-)
 
 # 
 # Aliases
