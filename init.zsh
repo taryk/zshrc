@@ -34,6 +34,8 @@ setopt auto_name_dirs
 setopt auto_pushd
 setopt pushd_ignore_dups
 
+fpath+=~/.zsh/completions
+
 autoload -U compinit
 compinit -C
 
