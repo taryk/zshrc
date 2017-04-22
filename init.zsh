@@ -151,14 +151,7 @@ alias -g T='| tail'
 alias -g TF='| tail -f'
 
 if [[ "$OSTYPE" == ^darwin.*$ ]]; then
-    IMAGE_VIEWER='/Applications/Preview.app/Contents/MacOS/Preview'
-    OFFICE_WRITER='/Applications/LibreOffice.app/Contents/MacOS/soffice --writer --nologo'
-    OFFICE_TABLES='/Applications/LibreOffice.app/Contents/MacOS/soffice --calc --nologo'
-    PDF_VIEWER='/Applications/Preview.app/Contents/MacOS/Preview'
-    DJVU_VIEWER='/Applications/DjVu\ Reader.app/Contents/MacOS/DjVu\ Reader'
-    EPUB_VIEWER='/Applications/iBooks.app/Contents/MacOS/iBooks'
-    VIDEO_PLAYER='/Applications/VLC.app/Contents/MacOS/VLC'
-    AUDIO_PLAYER='/Applications/VLC.app/Contents/MacOS/VLC'
+    typeset {IMAGE_VIEWER,OFFICE_WRITER,OFFICE_TABLES,PDF_VIEWER,DJVU_VIEWER,EPUB_VIEWER,VIDEO_PLAYER,AUDIO_PLAYER}=open
 else
     IMAGE_VIEWER='geeqie'
     OFFICE_WRITER='libreoffice --writer --nologo'
