@@ -92,9 +92,7 @@ zstyle ':completion:*' word true
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
-if [ -e /usr/bin/emacsclient.emacs24 ]; then
-  export EDITOR=emacsclient.emacs24
-elif [ -e /usr/bin/emacsclient ]; then
+if type -P emacsclient >/dev/null 2>&1; then
   export EDITOR=emacsclient
 else
   export EDITOR='emacs -nw'
